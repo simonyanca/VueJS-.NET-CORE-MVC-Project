@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="~/css/site.css" rel="stylesheet">
+    @ViewData["Title"]
+</head>
+<body>
+    <section id="Wrap">
+        <section class="TopMain">
+            <div class="Center">
+                <div class="TopMainWrap">
+                    <div class="Info">
+                        <div><h3 class="InfoTxt">О нас</h3></div>
+                        <div><h3 class="InfoTxt">Доставка</h3></div>
+                        <div><h3 class="InfoTxt">Оплата</h3></div>
+                    </div>
+                    <div class="Personal">
+                        <i class="fa fa-male" style="display: inline-block;font-size: xx-large;"></i>
+                        <h3 class="InfoTxt" style="display: inline-block;">Личный кабинет</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="TopMiddle">
+            <div class="Center">
+                <div class="TopMiddleWrap">
+                    <div class="Top">
+                        <img src="~/img/logo.jpg" width="70px" height="90px" ;>
+                        <div class="InputField" style="width: 20%; display: flex; justify-content: space-between;">
+                            <input type="text" rows="1" placeholder="Например: гипсокартон стеневой">
+                            <i class="fas fa-cloud" style=" padding-top: 5%; font-size: 100%;"></i>
+                        </div>
+                        <div class="Phone">
+                            <div><p>(099)-000-777-1</p></div>
+                            <div><p>Заказать звонок</p></div>
+                        </div>
+                        <div class="Icons">
+                            <i class="fas fa-shopping-cart" style="font-size: 200%;"></i>
+                            <i class="fas fa-heart" style="font-size: 200%;"></i>
+                            <i class="fas fa-balance-scale" style="font-size: 200%;"></i>
+                        </div>
+                        <div class="Button">
+                            <a href="Form/index.html"><button style="border-radius: 10px;background-color: rgb(247,158,120);"><p style="font-size: 100%;">Оформить заказ</p></button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Down">
+                    <div class="IconWrap" style="vertical-align: center; background-color: rgb(247,158,120); padding: 1%; border-radius: 30px;">
+                        <i class="fas fa-align-justify" style="font-size: 100%;"> </i>
+                    </div>
+                    <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Каталог товаров</a></h3></div>
+                    <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Акции</a></h3></div>
+                    <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Популярное</a></h3></div>
+                    <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Товары со скидкой</a></h3> </div>
+                </div>
+                @RenderBody()
+            </div>
+        </section>
+        <div class="Center">
+            <section class="CenterPictures" style="width: 100%;padding-top: 5%;">
+                <div style="width: 60%; height: 300px;"><img src="~/img/Shock.jpg" style="max-width: 100%; max-height: 100%;"></div>
+                <div style="width: 40%; height: 300px; display:flex; flex-direction: column; justify-content: space-between;">
+                    <div style="width: 100%; height: 50%;"><img src="~/img/Knauf.jpg" style="max-width: 100%; max-height: 100%;"></div>
+                    <div style="width: 100%; height: 50%;"><img src="~/img/Brick.jpg" style="max-width: 100%; max-height: 100%;"></div>
+                </div>
+            </section>
+            <section class="Propose" style="padding-top: 5%; width: 100%; display: flex; justify-content: space-between;">
+                <div style="width: 20%;">
+                    <i class="fas fa-ambulance" style="font-size: 150%;"></i>
+                    <div><h4>Бесплатная доставка</h4></div>
+                    <div><p>При заказе от 8000 грн, бесплатная доставка по всему Харькове</p></div>
+                </div>
+                <div style="width: 20%;">
+                    <i class="fas fa-ambulance" style="font-size: 150%;"></i>
+                    <div><h4>Бесплатная доставка</h4></div>
+                    <div><p>При заказе от 8000 грн, бесплатная доставка по всему Харькове</p></div>
+                </div>
+                <div style="width: 20%;">
+                    <i class="fas fa-ambulance" style="font-size: 150%;"></i>
+                    <div><h4>Бесплатная доставка</h4></div>
+                    <div><p>При заказе от 8000 грн, бесплатная доставка по всему Харькове</p></div>
+                </div>
+                <div style="width: 20%;">
+                    <i class="fas fa-ambulance" style="font-size: 150%;"></i>
+                    <div><h4>Бесплатная доставка</h4></div>
+                    <div><p>При заказе от 8000 грн, бесплатная доставка по всему Харькове</p></div>
+                </div>
+            </section>
+        </div>
+    </section>
+    @RenderSection("Scripts", required: false)
+    <script src="https://kit.fontawesome.com/f37f6a2eb2.js" crossorigin="anonymous"></script>
+</body>
+</html>
