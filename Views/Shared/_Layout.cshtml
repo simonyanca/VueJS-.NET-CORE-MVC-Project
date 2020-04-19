@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <link href="~/css/site.css" rel="stylesheet">
-    @ViewData["Title"]
 </head>
 <body>
     <section id="Wrap">
@@ -52,11 +51,11 @@
                     <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Каталог товаров</a></h3></div>
                     <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Акции</a></h3></div>
                     <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Популярное</a></h3></div>
-                    <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Market1">Товары со скидкой</a></h3> </div>
+                    <div class="MenuTxt"><h3><a asp-controller="Home" asp-action="Index">Товары со скидкой</a></h3> </div>
                 </div>
-                @RenderBody()
             </div>
         </section>
+        @RenderBody()
         <div class="Center">
             <section class="CenterPictures" style="width: 100%;padding-top: 5%;">
                 <div style="width: 60%; height: 300px;"><img src="~/img/Shock.jpg" style="max-width: 100%; max-height: 100%;"></div>

@@ -14,7 +14,6 @@ namespace ASPNETCoreWithVueJs.Controllers
         {
             return View();
         }
-
         public IActionResult Market1()
         {
             return View();
