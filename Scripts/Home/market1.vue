@@ -1,6 +1,6 @@
 <template>
     <div id="market1">
-        {{ message }},{{xyi}}
+        {{ message }},{{mes}}
     </div>
 </template>
 <script>
@@ -8,7 +8,7 @@
       data: function() {
       return {
           message: 'Some Message',
-          xyi : "Another Message",
+          mes : "Another Message",
         };
        }
     };
