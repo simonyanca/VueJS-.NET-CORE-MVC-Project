@@ -11,20 +11,20 @@
     background-color: rgb(97,90,87);
 }
 
-    .TopMain .Center .TopMainWrap {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+.TopMain .Center .TopMainWrap {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
 
-        .TopMain .Center .TopMainWrap .Info {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 50%;
-            flex-wrap: wrap;
-            align-items: baseline;
-        }
+.TopMain .Center .TopMainWrap .Info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
 
 .InfoTxt {
     color: rgb(158,155,152);
@@ -61,13 +61,13 @@ input[type = "text"] {
     padding-bottom: 1%;
 }
 
-    .TopMiddle .TopMiddleWrap .Top {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
+.TopMiddle .TopMiddleWrap .Top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
 .Icons {
     width: 9%;

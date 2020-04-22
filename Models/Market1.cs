@@ -11,7 +11,7 @@ namespace Vue_Core.Models
     public class Market1Item
     {
         public int Id { get; set; }
-        public byte[] Img { get; set; }
+        public byte[] ImgData { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
@@ -41,14 +41,15 @@ namespace Vue_Core.Models
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Market1Item>("SELECT * FROM Market1TB").ToList();
+                var toReturn =  db.Query<Market1Item>("SELECT * FROM Market1TB").ToList();
+                return toReturn;
             }
         }
         public void Create(Market1Item item)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Market1TB (Name, Description, Img) VALUES(@Name, @Description, @Img)";
+                var sqlQuery = "INSERT INTO Market1TB (Name, Description, ImgData) VALUES(@Name, @Description, @ImgData)";
                 db.Execute(sqlQuery, item);
                 // если мы хотим получить id добавленного пользователя
                 //var sqlQuery = "INSERT INTO Users (Name, Age) VALUES(@Name, @Age); SELECT CAST(SCOPE_IDENTITY() as int)";
@@ -60,7 +61,7 @@ namespace Vue_Core.Models
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Market1TB SET Name = @Name, Description = @Description, Img = @Img WHERE Id = @Id";
+                var sqlQuery = "UPDATE Market1TB SET Name = @Name, Description = @Description, ImgData = @ImgData WHERE Id = @Id";
                 db.Execute(sqlQuery, user);
             }
         }

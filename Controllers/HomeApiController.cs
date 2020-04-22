@@ -8,6 +8,7 @@ using Vue_Core.Models;
 using System.Web;
 using Nancy.Json;
 using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace Vue_Core.Controllers
 {
@@ -21,11 +22,15 @@ namespace Vue_Core.Controllers
             repo = market1TB;
         }
         // GET: api/HomeApi/market1
-        [HttpGet("market1", Name = "Get")]
+        [HttpGet("market1")]
         public string Get(int id)
         {
-            var result = repo.GetItems();
-            var json = JsonSerializer.Serialize(result);
+            var referList = repo.GetItems();
+            var resultList = new List<Object>();
+            referList.ForEach(el => { resultList.Add
+                (new { Id = el.Id, Name = el.Name, Description = el.Description, ImgData = Convert.ToBase64String(el.ImgData) }); 
+            });
+            var json = System.Text.Json.JsonSerializer.Serialize(resultList);
             return json;
         }
     }
