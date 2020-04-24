@@ -20,7 +20,6 @@
                 fetch('http://localhost:56180/api/HomeApi/market1').then(function (response) {
                     response.json().then(function (parsedJson) {
                         self.goodsArr = parsedJson;
-                        console.log(self.goodsArr);
                     })
                 })
             },

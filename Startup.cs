@@ -26,6 +26,7 @@ namespace Vue_Core
             string connectionString = "Server=DESKTOP-VKNS1L5;Database=ProjectDb;Integrated Security=True";
             services.AddTransient<IMarket1Repository, Market1Repo>(provider => new Market1Repo(connectionString));
             services.AddTransient<IMarket2Repository, Market2Repo>(provider => new Market2Repo(connectionString));
+            services.AddTransient<IUserRepository, UserRepo>(provider => new UserRepo(connectionString));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                .AddCookie(options => //CookieAuthenticationOptions
                 {
@@ -52,7 +53,7 @@ namespace Vue_Core
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}");
             });
         }
     }
