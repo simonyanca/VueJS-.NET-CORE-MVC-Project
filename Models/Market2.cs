@@ -8,56 +8,57 @@ using System.Data.SqlClient;
 
 namespace Vue_Core.Models
 {
-    public class Market1Item
+    public class Market2Item
     {
         public int Id { get; set; }
         public byte[] ImgData { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public int Discount { get; set; }
     }
-    public interface IMarket1Repository
+    public interface IMarket2Repository
     {
-        void Create(Market1Item item);
+        void Create(Market2Item item);
         void Delete(int id);
-        Market1Item Get(int id);
-        List<Market1Item> GetItems();
-        void Update(Market1Item item);
+        Market2Item Get(int id);
+        List<Market2Item> GetItems();
+        void Update(Market2Item item);
     }
-    public class Market1Repo : IMarket1Repository
+    public class Market2Repo : IMarket2Repository
     {
         string connectionString = null;
-        public Market1Repo(string conn)
+        public Market2Repo(string conn)
         {
             connectionString = conn;
         }
-        public Market1Item Get(int Id)
+        public Market2Item Get(int Id)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                return db.Query<Market1Item>("SELECT * FROM Market1TB WHERE Id = @Id", new { Id }).First();
+                return db.Query<Market2Item>("SELECT * FROM Market2TB WHERE Id = @Id", new { Id }).First();
             }
         }
-        public List<Market1Item> GetItems()
+        public List<Market2Item> GetItems()
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var toReturn =  db.Query<Market1Item>("SELECT * FROM Market1TB").ToList();
+                var toReturn =  db.Query<Market2Item>("SELECT * FROM Market2TB").ToList();
                 return toReturn;
             }
         }
-        public void Create(Market1Item item)
+        public void Create(Market2Item item)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "INSERT INTO Market1TB (Name, Description, ImgData) VALUES(@Name, @Description, @ImgData)";
+                var sqlQuery = "INSERT INTO Market2TB (Name, Description, ImgData, Discount) VALUES(@Name, @Description, @ImgData, @Discount)";
                 db.Execute(sqlQuery, item);
             }
         }
-        public void Update(Market1Item user)
+        public void Update(Market2Item user)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "UPDATE Market1TB SET Name = @Name, Description = @Description, ImgData = @ImgData WHERE Id = @Id";
+                var sqlQuery = "UPDATE Market2TB SET Name = @Name, Description = @Description, ImgData = @ImgData WHERE Id = @Id";
                 db.Execute(sqlQuery, user);
             }
         }
@@ -65,7 +66,7 @@ namespace Vue_Core.Models
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
-                var sqlQuery = "DELETE FROM Market1TB WHERE Id = @Id";
+                var sqlQuery = "DELETE FROM Market2TB WHERE Id = @Id";
                 db.Execute(sqlQuery, new { id });
             }
         }
