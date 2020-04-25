@@ -14,13 +14,17 @@ namespace Vue_Core.Models
             this.Login = Login;
             this.Password = Password;
         }
+        public User(string Login)
+        {
+            this.Login = Login;
+        }
         public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
     }
     public interface IUserRepository
     {
-        void Create(string Login, string Password);
+        int Create(string Login, string Password);
         bool ifExists(string Login, string Password);
     }
     public class UserRepo: IUserRepository
@@ -30,13 +34,17 @@ namespace Vue_Core.Models
         {
             connectionString = conn;
         }
-        public void Create(string Login, string Password)
+        public int Create(string Login, string Password)
         {
             using (IDbConnection db = new SqlConnection(connectionString))
             {
                 var sqlQuery1 = "INSERT INTO UserTB (Login,Password) VALUES(@Login,@Password)";
                 User user = new User(Login, Password);
                 var result = db.Execute(sqlQuery1, user);
+
+                var sqlQuery = "INSERT INTO UserTB (Login,Password) VALUES(@Login,@Password); SELECT CAST(SCOPE_IDENTITY() as int)";
+                int? userId = db.Query<int>(sqlQuery, user).FirstOrDefault();
+                return userId.Value;
             }
         }
         public bool ifExists(string Login, string Password)

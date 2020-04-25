@@ -27,6 +27,7 @@ namespace Vue_Core
             services.AddTransient<IMarket1Repository, Market1Repo>(provider => new Market1Repo(connectionString));
             services.AddTransient<IMarket2Repository, Market2Repo>(provider => new Market2Repo(connectionString));
             services.AddTransient<IUserRepository, UserRepo>(provider => new UserRepo(connectionString));
+            services.AddTransient<ICartItemRepo, CartItemRepo>(provider => new CartItemRepo(connectionString));
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                .AddCookie(options => //CookieAuthenticationOptions
                 {

@@ -15,12 +15,14 @@ body{
     box-sizing: border-box;
 }
 ul {
-    list-style-type: circle;
+    list-style-type: none;
     border: 2px solid blue;
     padding: 1%;
     background-color: lightblue;
 }
 li {
+    color: red;
+    font-size: 3rem;
     margin: 0;
     background-color: lightyellow;
 }

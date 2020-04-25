@@ -3,8 +3,8 @@
         <ul v-for="item in goodsArr" :key="item.Id" id="market1">
             <li class="Name">{{ item.Name }}</li>
             <li class="Img"><img v-bind:src="getImg(item.ImgData)"></li>
+            <li><div v-on:click="logId(item.Id)" class="btn"><span>Purchase</span></div></li>
             <li class="Description">{{ item.Description }}</li>
-            <li><div class="btn"><span>Purchase</span></div></li>
         </ul>
     </section>
 </template>
@@ -17,7 +17,7 @@
             },
             mounted() {
                 let self= this;
-                fetch('http://localhost:56180/api/HomeApi/market1').then(function (response) {
+                fetch('/api/HomeApi/market1').then(function (response) {
                     response.json().then(function (parsedJson) {
                         self.goodsArr = parsedJson;
                     })
@@ -28,6 +28,7 @@
                     return "data:image/jpg;base64," + toConvert;
                 },
                 logId(id) {
+                    alert(document.cookie.Login);
                     console.log(id);
                 }
             }

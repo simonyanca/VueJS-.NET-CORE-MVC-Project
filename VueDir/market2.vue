@@ -4,7 +4,7 @@
             <li class="Name">{{ item.Name }}</li>
             <li class="Img"><div class= "Discount"><span>-{{item.Discount}}%</span></div><img v-bind:src="getImg(item.ImgData)"></li>
             <li class="Description">{{ item.Description }}</li>
-            <li><div class="btn"><span>Purchase</span></div></li>
+            <li><div v-on:click="Modify(item)" class="btn"><span>Purchase</span></div></li>
         </ul>
     </section>
 </template>
@@ -17,17 +17,38 @@
         },
         mounted() {
             let self = this;
-            fetch('http://localhost:56180/api/HomeApi/market2').then(function (response) {
-                response.json().then(function (parsedJson) {
-                })
-            })
+                fetch('/api/HomeApi/market2').then(function (response) {
+                    response.json().then(function (parsedJson) {
+                        self.goodsArr = parsedJson;
+                    })
+                });
         },
         methods: {
             getImg(toConvert) {
                 return "data:image/jpg;base64," + toConvert;
             },
-            logId(id) {
-                console.log(id);
+            Modify(item) {
+                let id;
+                  fetch('/api/HomeApi/getUser').then(function (response) {
+                    response.json().then(function (parsedJson) {
+                        id = parsedJson;
+                    })
+                  });
+                item.UserId = id;
+                console.log(item);
+                this.Post(item);
+            },
+            Post(item) {
+                 let response = fetch('/api/HomeApi/ToUserCart', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json;charset=utf-8'
+                  },
+                  body: JSON.stringify(item)
+                });
+
+                let result = response.json();
+                Console.log(result.message);
             }
         }
     };

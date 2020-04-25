@@ -14,6 +14,7 @@ namespace Vue_Core.Controllers
     public class AccountController : Controller
     {
         private IUserRepository db;
+        public static int UserId { get; private set; }
         public AccountController(IUserRepository db)
         {
             this.db = db;
@@ -32,8 +33,8 @@ namespace Vue_Core.Controllers
                 var ifExists = db.ifExists(model.Login, model.Password);
                 if (ifExists)
                 {
-                    await Authenticate(model.Login); // аутентификация
-
+                    var id = db.GetId(model.Login);
+                    await Authenticate(id.ToString());       // аутентификация
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
@@ -55,9 +56,9 @@ namespace Vue_Core.Controllers
                 if (!ifExists)
                 {
                     // добавляем пользователя в бд
-                    db.Create(model.Login, model.Password);
-
-                    await Authenticate(model.Login); // аутентификация
+                    int id = db.Create(model.Login, model.Password);
+                    this.UserId
+                    await Authenticate(id.ToString()); // аутентификация
 
                     return RedirectToAction("Index", "Home");
                 }

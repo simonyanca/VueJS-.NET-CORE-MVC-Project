@@ -16,11 +16,6 @@ namespace ASPNETCoreWithVueJs.Controllers
         {
             return View();
         }
-        //[Authorize]
-        //public IActionResult Index()
-        //{
-        //    return Content(User.Identity.Name);
-        //}
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

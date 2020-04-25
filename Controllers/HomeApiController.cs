@@ -5,9 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Vue_Core.Models;
-using System.Web;
-using Nancy.Json;
-using System.Text.Json;
 using Newtonsoft.Json;
 
 namespace Vue_Core.Controllers
@@ -18,10 +15,26 @@ namespace Vue_Core.Controllers
     {
         IMarket1Repository repo1;
         IMarket2Repository repo2;
-        public HomeApiController(IMarket1Repository market1TB,IMarket2Repository market2TB)
+        ICartItemRepo repo3;
+        public HomeApiController(IMarket1Repository market1TB,IMarket2Repository market2TB, ICartItemRepo userCartRepo)
         {
             repo1 = market1TB;
             repo2 = market2TB;
+            repo3 = userCartRepo;
+        }
+        [HttpPost("ToUserCart")]
+        public void Post1(string json)
+        {
+            var userId = User.Identity.Name;
+            var item = JsonConvert.DeserializeObject<CartItem>(json);
+            repo3.Create(item);
+        }
+        // GET: api/HomeApi/getUser
+        [HttpGet("getUser")]
+        public string Get3(int id)
+        {
+            var userId = User.Identity.Name;
+            return userId;
         }
         // GET: api/HomeApi/market1
         [HttpGet("market1")]
